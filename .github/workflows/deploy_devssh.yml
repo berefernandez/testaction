@@ -61,6 +61,7 @@ jobs:
            host: ${{ secrets.DEV_SSH_HOST }}
            username: ${{ secrets.DEV_SSH_USERNAME }}
            password: ${{ secrets.DEV_SSH_KEY }}
+           port: 22
            script: 
             # git update to latest codebase on main branch
             cd /web/sites/testaction && git pull
