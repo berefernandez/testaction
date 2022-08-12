@@ -17,9 +17,9 @@ jobs:
     - name: Deploy via SSH
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USERNAME }}
-        key: ${{ secrets.SSH_KEY }}
+        host: ${{ secrets.DEV_SSH_HOST }}
+        username: ${{ secrets.DEV_SSH_USERNAME }}
+        key: ${{ secrets.DEV_SSH_KEY }}
         script: 
           # git update to latest codebase on main branch
           cd /web/sites/testaction && git pull
