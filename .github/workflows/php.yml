@@ -10,33 +10,20 @@ permissions:
   contents: read
 
 jobs:
-   deploy:
-    name: Deploy
+   build:
+
     runs-on: ubuntu-latest
+
     steps:
-    - name: Deploy via SSH
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.DEV_SSH_HOST }}
-        username: ${{ secrets.DEV_SSH_USERNAME }}
-        key: ${{ secrets.DEV_SSH_KEY }}
-        script: 
-          # git update to latest codebase on main branch
-          cd /web/sites/testaction && git pull
-  #build:
-
-  #  runs-on: ubuntu-latest
-
-  #  steps:
-  #   - uses: actions/checkout@v3
+     - uses: actions/checkout@v3
      
-  #   - name: Gather files changed
-  #     uses: trilom/file-changes-action@a6ca26c14274c33b15e6499323aac178af06ad4b
-  #     with:
-  #        fileOutput: 'json'
+     - name: Gather files changed
+       uses: trilom/file-changes-action@a6ca26c14274c33b15e6499323aac178af06ad4b
+       with:
+          fileOutput: 'json'
         
-  #   - name: Show files changed 
-  #     run: cat $HOME/files.json
+     - name: Show files changed 
+       run: cat $HOME/files.json
   
 
     # - name: Validate composer.json and composer.lock
